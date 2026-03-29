@@ -18,7 +18,7 @@ GitHub
 
 ## Installation
 1. Cloner le projet
-git clone https://github.com/username/discover-tunisia.git
+git clone https://github.com/amine444-bit/discover-tunisia.git
 
 2. Ouvrir le fichier index.html
 
