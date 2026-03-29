@@ -1,73 +1,175 @@
-/* ---- Destinations ---- */
-.hero-small {
-    min-height: 40vh;
-    padding: 4rem 2rem;
+/* ===== VARIABLES ===== */
+:root {
+    --primary: #c26a3d;
+    --secondary: #f4e8d8;
+    --dark: #1e1612;
+    --text: #333;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
-.destinations {
-    padding: 5rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.destinations h2 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: var(--text);
+}
+
+/* ===== HEADER ===== */
+header {
+    background: var(--white);
+    padding: 20px 40px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: var(--primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url("https://images.unsplash.com/photo-1548786811-dd6e453ccca7");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--night);
+    color: white;
 }
 
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ===== DESTINATIONS ===== */
 .destinations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .destination-card {
-    background: var(--white);
-    border-radius: var(--radius-md);
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
-    border: 1px solid var(--sand-dark);
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition: 0.3s;
 }
 
 .destination-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 48px rgba(30, 22, 18, 0.16);
+    transform: translateY(-5px);
 }
 
 .destination-img {
-    font-size: 3.5rem;
-    background: var(--sand);
-    padding: 2rem;
+    font-size: 50px;
+    background: var(--secondary);
     text-align: center;
+    padding: 30px;
 }
 
 .destination-body {
-    padding: 1.6rem;
+    padding: 20px;
 }
 
 .destination-body h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--night);
-    margin-bottom: 0.4rem;
+    margin-bottom: 5px;
 }
 
 .destination-tag {
-    font-size: 0.8rem;
-    color: var(--terracotta);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
+    color: var(--primary);
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-.destination-body p:last-child {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-    background-color: red;
+/* ===== CONTACT ===== */
+form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a5562f;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--dark);
+    color: white;
+    margin-top: 40px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
 }
