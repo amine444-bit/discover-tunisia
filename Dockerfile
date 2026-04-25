@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ── Étape 1 : image de base ──────────────────────
 # nginx:alpine = Nginx + Linux Alpine (~7 Mo seulement)
 FROM nginx:alpine
@@ -18,3 +19,10 @@ EXPOSE 80
 
 # ── Étape 6 : commande de démarrage ──────────────
 CMD ["nginx", "-g", "daemon off;"]
+=======
+FROM nginx:alpine
+
+COPY . /usr/share/nginx/html
+
+EXPOSE 80
+>>>>>>> d69116fa29313a79c7b6ea66fd407bdafbaf51b6

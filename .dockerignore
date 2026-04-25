@@ -1,4 +1,9 @@
 .git
+<<<<<<< HEAD
 *.md
 .env
 node_modules
+=======
+node_modules
+README.md
+>>>>>>> d69116fa29313a79c7b6ea66fd407bdafbaf51b6
