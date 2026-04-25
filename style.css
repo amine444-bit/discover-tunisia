@@ -1,0 +1,175 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary: #c26a3d;
+    --secondary: #f4e8d8;
+    --dark: #1e1612;
+    --text: #333;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: var(--text);
+}
+
+/* ===== HEADER ===== */
+header {
+    background: var(--white);
+    padding: 20px 40px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: var(--primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url("https://images.unsplash.com/photo-1548786811-dd6e453ccca7");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ===== DESTINATIONS ===== */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.destination-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+}
+
+.destination-img {
+    font-size: 50px;
+    background: var(--secondary);
+    text-align: center;
+    padding: 30px;
+}
+
+.destination-body {
+    padding: 20px;
+}
+
+.destination-body h3 {
+    margin-bottom: 5px;
+}
+
+.destination-tag {
+    color: var(--primary);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* ===== CONTACT ===== */
+form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a5562f;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--dark);
+    color: white;
+    margin-top: 40px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}

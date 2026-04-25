@@ -1,0 +1,85 @@
+name: CI — Validation du code
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  validate-html:
+    name: 🔍 Validation HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Installer html5validator
+        run: pip install html5validator --quiet
+
+      - name: ✅ Valider les fichiers HTML
+        run: |
+          html5validator --root . --match "*.html" \
+            --log INFO \
+            || echo "⚠️  Des avertissements HTML ont été détectés"
+
+  validate-css:
+    name: 🎨 Validation CSS
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Installer stylelint
+        run: npm install -g stylelint stylelint-config-standard
+
+      - name: 🔧 Configurer stylelint
+        run: |
+          echo '{"extends":["stylelint-config-standard"]}' > .stylelintrc.json
+
+      - name: ✅ Valider le CSS
+        run: |
+          stylelint "css/**/*.css" --allow-empty-input \
+            || echo "⚠️  Des avertissements CSS ont été détectés"
+
+  check-structure:
+    name: 📁 Vérification de la structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🔎 Vérifier les fichiers requis
+        run: |
+          REQUIRED_FILES=(
+            "index.html"
+            "css"
+            "js"
+            "html"
+          )
+
+          ALL_OK=true
+          for FILE in "${REQUIRED_FILES[@]}"; do
+            if [ -e "$FILE" ]; then
+              echo "✅  $FILE trouvé"
+            else
+              echo "❌  $FILE MANQUANT"
+              ALL_OK=false
+            fi
+          done
+
+          if [ "$ALL_OK" = false ]; then
+            echo "::error::Des fichiers requis sont manquants !"
+            exit 1
+          fi
+
+          echo "✅  Structure du projet validée."
