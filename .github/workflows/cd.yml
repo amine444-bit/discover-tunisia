@@ -32,7 +32,6 @@ jobs:
           echo "Build numéro : $BUILD_NUMBER"
           echo "Commit : $SHORT_SHA"
 
-          cat > env.js << EOF
-          // ⚠️ Fichier généré automatiquement par GitHub Actions
-          window.ENV   = 'production';
-          window.BUILD = 'build #${BUILD_
+          printf "// ⚠️ Fichier généré automatiquement par GitHub Actions\nwindow.ENV = 'production';\nwindow.BUILD = 'build #%s (%s)';\n" "$BUILD_NUMBER" "$SHORT_SHA" > env.js
+
+          echo "✅ env.js généré"
