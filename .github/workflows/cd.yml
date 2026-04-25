@@ -1,0 +1,38 @@
+name: CD — Déploiement sur GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+
+  build:
+    name: 🔨 Préparation du build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Injecter les métadonnées de build
+        run: |
+          BUILD_NUMBER="${{ github.run_number }}"
+          COMMIT_SHA="${{ github.sha }}"
+          SHORT_SHA="${COMMIT_SHA:0:7}"
+
+          echo "Build numéro : $BUILD_NUMBER"
+          echo "Commit : $SHORT_SHA"
+
+          cat > env.js << EOF
+          // ⚠️ Fichier généré automatiquement par GitHub Actions
+          window.ENV   = 'production';
+          window.BUILD = 'build #${BUILD_
