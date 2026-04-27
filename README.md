@@ -29,3 +29,4 @@ feature branches : développement des fonctionnalités
 
 ## Gestion des conflits
 Un conflit a été provoqué sur le fichier style.css puis résolu manuellement avec Git.
+echo "" >> README.md
