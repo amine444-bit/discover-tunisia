@@ -27,7 +27,7 @@ jobs:
             --log INFO \
             || echo "⚠️  Des avertissements HTML ont été détectés"
 
-  validate-css:
+    validate-css:
     name: 🎨 Validation CSS
     runs-on: ubuntu-latest
     steps:
